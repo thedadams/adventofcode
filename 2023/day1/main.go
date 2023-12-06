@@ -21,6 +21,9 @@ func partOne() {
 	if err != nil {
 		panic(err)
 	}
+	defer func() {
+		_ = s.Close()
+	}()
 
 	var ans int64
 	for s.Scan() {
@@ -43,8 +46,11 @@ func partOne() {
 func partTwo() {
 	s, err := util.ReadInputFile(f)
 	if err != nil {
-		return
+		panic(err)
 	}
+	defer func() {
+		_ = s.Close()
+	}()
 
 	var ans int64
 	for s.Scan() {

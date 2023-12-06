@@ -20,8 +20,11 @@ func main() {
 func partOne() {
 	s, err := util.ReadInputFile(f)
 	if err != nil {
-		return
+		panic(err)
 	}
+	defer func() {
+		_ = s.Close()
+	}()
 
 	grid := make([][]string, 0)
 	visited := make([][]bool, 0)
@@ -50,8 +53,11 @@ func partOne() {
 func partTwo() {
 	s, err := util.ReadInputFile(f)
 	if err != nil {
-		return
+		panic(err)
 	}
+	defer func() {
+		_ = s.Close()
+	}()
 
 	grid := make([][]string, 0)
 	visited := make([][]bool, 0)

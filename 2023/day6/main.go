@@ -20,8 +20,11 @@ func main() {
 func partOne() {
 	s, err := util.ReadInputFile(f)
 	if err != nil {
-		return
+		panic(err)
 	}
+	defer func() {
+		_ = s.Close()
+	}()
 
 	times := make([]int, 0)
 	distances := make([]int, 0)
@@ -62,8 +65,11 @@ func partOne() {
 func partTwo() {
 	s, err := util.ReadInputFile(f)
 	if err != nil {
-		return
+		panic(err)
 	}
+	defer func() {
+		_ = s.Close()
+	}()
 
 	s.Scan()
 	_, nums, _ := strings.Cut(s.Text(), ":")

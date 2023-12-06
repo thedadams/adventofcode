@@ -1,7 +1,6 @@
 package main
 
 import (
-	"bufio"
 	"embed"
 	"fmt"
 	"math"
@@ -22,8 +21,11 @@ func main() {
 func partOne() {
 	s, err := util.ReadInputFile(f)
 	if err != nil {
-		return
+		panic(err)
 	}
+	defer func() {
+		_ = s.Close()
+	}()
 
 	seeds := make([]int, 0)
 	s.Scan()
@@ -82,8 +84,11 @@ func partOne() {
 func partTwo() {
 	s, err := util.ReadInputFile(f)
 	if err != nil {
-		return
+		panic(err)
 	}
+	defer func() {
+		_ = s.Close()
+	}()
 
 	seeds := make([]int, 0)
 	s.Scan()
@@ -147,7 +152,7 @@ type node struct {
 	left, right                    *node
 }
 
-func populateMapBST(s *bufio.Scanner) *node {
+func populateMapBST(s *util.Scanner) *node {
 	var n *node
 
 	// Start
