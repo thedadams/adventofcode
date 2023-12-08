@@ -39,7 +39,7 @@ func partOne() {
 		y++
 	}
 
-	fmt.Printf("Answer Day Two, Part One: %v\n", trees)
+	fmt.Printf("Answer Day Three, Part One: %v\n", trees)
 }
 
 func partTwo() {
@@ -70,5 +70,5 @@ func partTwo() {
 		ans *= trees
 	}
 
-	fmt.Printf("Answer Day Two, Part Two: %v\n", ans)
+	fmt.Printf("Answer Day Three, Part Two: %v\n", ans)
 }
