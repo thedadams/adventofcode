@@ -78,7 +78,7 @@ func partTwo() {
 	}
 
 	firstZs := make([]int, len(positions))
-	var hops, LCM int
+	var hops int
 	for {
 		for _, direction := range pattern {
 			hops++
@@ -103,8 +103,7 @@ func partTwo() {
 				}
 			}
 			if allZsFound {
-				LCM = lcmSlice(firstZs)
-				fmt.Printf("Answer Day Eight, Part Two: %v\n", LCM)
+				fmt.Printf("Answer Day Eight, Part Two: %v\n", lcmSlice(firstZs))
 				return
 			}
 		}
