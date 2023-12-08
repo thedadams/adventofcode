@@ -79,5 +79,5 @@ func partTwo() {
 		}
 	}
 
-	fmt.Printf("Answer Day Two, Part One: %v\n", validPasswords)
+	fmt.Printf("Answer Day Two, Part Two: %v\n", validPasswords)
 }
