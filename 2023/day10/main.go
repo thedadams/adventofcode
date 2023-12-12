@@ -144,13 +144,6 @@ func partTwo() {
 		}
 	}
 
-	for _, row := range inOut {
-		for _, spot := range row {
-			fmt.Printf("%2s", spot)
-		}
-		fmt.Println()
-	}
-
 	fmt.Printf("Answer Day Ten, Part Two: %v\n", count)
 }
 

@@ -8,7 +8,7 @@ func ValidStandardNeighbors[T comparable](grid [][]T, i, j int) [][2]int {
 		{i + 1, j},
 		{i - 1, j},
 	} {
-		if pair[0] >= 0 && pair[1] >= 0 && pair[1] < len(grid) && pair[0] < len(grid[pair[1]]) {
+		if pair[0] >= 0 && pair[1] >= 0 && pair[0] < len(grid) && pair[1] < len(grid[pair[0]]) {
 			nbrs = append(nbrs, pair)
 		}
 	}
@@ -28,7 +28,7 @@ func ValidNeighborsWithDiagonals[T comparable](grid [][]T, x, y int) [][2]int {
 		{x + 1, y},
 		{x - 1, y},
 	} {
-		if pair[0] >= 0 && pair[1] >= 0 && pair[1] < len(grid) && pair[0] < len(grid[pair[1]]) {
+		if pair[0] >= 0 && pair[1] >= 0 && pair[0] < len(grid) && pair[1] < len(grid[pair[0]]) {
 			nbrs = append(nbrs, pair)
 		}
 	}
