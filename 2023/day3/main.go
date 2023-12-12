@@ -37,7 +37,7 @@ func partOne() {
 	for i, row := range grid {
 		for j, item := range row {
 			if _, err := strconv.Atoi(item); item != "." && err != nil {
-				for _, pair := range neighbors(grid, i, j) {
+				for _, pair := range util.ValidNeighborsWithDiagonals(grid, i, j) {
 					if _, err := strconv.Atoi(grid[pair[0]][pair[1]]); visited[pair[0]][pair[1]] || err != nil {
 						continue
 					}
@@ -74,7 +74,7 @@ func partTwo() {
 					clear(row)
 				}
 				adjacent, ratio := 0, 1
-				for _, pair := range neighbors(grid, i, j) {
+				for _, pair := range util.ValidNeighborsWithDiagonals(grid, i, j) {
 					if _, err := strconv.Atoi(grid[pair[0]][pair[1]]); visited[pair[0]][pair[1]] || err != nil {
 						continue
 					}
@@ -89,28 +89,6 @@ func partTwo() {
 	}
 
 	fmt.Printf("Answer Day Three, Part Two: %v\n", ans)
-}
-
-func neighbors(grid [][]string, i, j int) [][]int {
-	nbrs := make([][]int, 0)
-	for _, pair := range [][]int{
-		{i - 1, j - 1},
-		{i + 1, j - 1},
-		{i + 1, j + 1},
-		{i - 1, j + 1},
-		{i, j + 1},
-		{i, j - 1},
-		{i + 1, j},
-		{i - 1, j},
-	} {
-		if pair[0] < 0 || pair[1] < 0 || pair[0] > len(grid) || pair[1] > len(grid[pair[0]]) {
-			continue
-		}
-
-		nbrs = append(nbrs, pair)
-	}
-
-	return nbrs
 }
 
 func expandNumber(grid [][]string, visited [][]bool, i, j int) int {

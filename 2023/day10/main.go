@@ -43,7 +43,7 @@ func partOne() {
 
 	nextSpots := make([][4]int, 0)
 	// Find the starting directions for the search
-	for _, nb := range allNeighbors(grid, startX, startY) {
+	for _, nb := range util.ValidStandardNeighbors(grid, startX, startY) {
 		if next := nextNeighbor(grid, startX, startY, nb[0], nb[1]); next[0] != -1 && next[1] != -1 {
 			nextSpots = append(nextSpots, [4]int{startX, startY, nb[0], nb[1]})
 		}
@@ -88,7 +88,7 @@ func partTwo() {
 	}
 
 	nextSpots := make([][4]int, 0)
-	for _, nb := range allNeighbors(grid, startX, startY) {
+	for _, nb := range util.ValidStandardNeighbors(grid, startX, startY) {
 		if next := nextNeighbor(grid, startX, startY, nb[0], nb[1]); next[0] != -1 && next[1] != -1 {
 			nextSpots = append(nextSpots, [4]int{startX, startY, nb[0], nb[1]})
 			break
@@ -152,22 +152,6 @@ func partTwo() {
 	}
 
 	fmt.Printf("Answer Day Ten, Part Two: %v\n", count)
-}
-
-func allNeighbors(grid [][]string, i, j int) [][2]int {
-	nbrs := make([][2]int, 0)
-	for _, pair := range [][2]int{
-		{i, j + 1},
-		{i, j - 1},
-		{i + 1, j},
-		{i - 1, j},
-	} {
-		if pair[0] >= 0 && pair[1] >= 0 && pair[1] < len(grid) && pair[0] < len(grid[pair[1]]) {
-			nbrs = append(nbrs, pair)
-		}
-	}
-
-	return nbrs
 }
 
 func nextNeighbor(grid [][]string, prevI, prevJ, i, j int) [2]int {
