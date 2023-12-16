@@ -3,7 +3,6 @@ package main
 import (
 	"embed"
 	"fmt"
-	"strconv"
 	"strings"
 
 	"github.com/thedadams/adventofcode/2023/util"
@@ -31,7 +30,7 @@ func partOne() {
 		input := strings.Split(s.Text(), " ")
 		nums := make([]int64, len(input))
 		for i, num := range input {
-			n, _ := strconv.ParseInt(num, 10, 64)
+			n := util.MustParseInt(num)
 			nums[i] = n
 		}
 
@@ -83,7 +82,7 @@ func partTwo() {
 		input := strings.Split(s.Text(), " ")
 		nums := make([]int64, len(input))
 		for i, num := range input {
-			n, _ := strconv.ParseInt(num, 10, 64)
+			n := util.MustParseInt(num)
 			nums[i] = n
 		}
 

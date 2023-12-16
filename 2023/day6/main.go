@@ -3,7 +3,6 @@ package main
 import (
 	"embed"
 	"fmt"
-	"strconv"
 	"strings"
 
 	"github.com/thedadams/adventofcode/2023/util"
@@ -33,7 +32,7 @@ func partOne() {
 	_, nums, _ := strings.Cut(s.Text(), ":")
 	for _, num := range strings.Split(nums, " ") {
 		if num := strings.TrimSpace(num); num != "" {
-			n, _ := strconv.Atoi(num)
+			n := util.MustAtoi(num)
 			times = append(times, n)
 		}
 	}
@@ -42,7 +41,7 @@ func partOne() {
 	_, nums, _ = strings.Cut(s.Text(), ":")
 	for _, num := range strings.Split(nums, " ") {
 		if num := strings.TrimSpace(num); num != "" {
-			n, _ := strconv.Atoi(num)
+			n := util.MustAtoi(num)
 			distances = append(distances, n)
 		}
 	}
@@ -73,11 +72,11 @@ func partTwo() {
 
 	s.Scan()
 	_, nums, _ := strings.Cut(s.Text(), ":")
-	totalTime, _ := strconv.Atoi(strings.ReplaceAll(nums, " ", ""))
+	totalTime := util.MustAtoi(strings.ReplaceAll(nums, " ", ""))
 
 	s.Scan()
 	_, nums, _ = strings.Cut(s.Text(), ":")
-	totalDistance, _ := strconv.Atoi(strings.ReplaceAll(nums, " ", ""))
+	totalDistance := util.MustAtoi(strings.ReplaceAll(nums, " ", ""))
 
 	var ways int
 	for j := 0; j < totalTime; j++ {

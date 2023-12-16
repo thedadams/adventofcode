@@ -3,7 +3,6 @@ package main
 import (
 	"embed"
 	"fmt"
-	"strconv"
 
 	"github.com/thedadams/adventofcode/2023/util"
 )
@@ -27,7 +26,7 @@ func partOne() {
 
 	numbersThatMatch := make(map[int]struct{})
 	for s.Scan() {
-		num, _ := strconv.Atoi(s.Text())
+		num := util.MustAtoi(s.Text())
 		if _, ok := numbersThatMatch[2020-num]; ok {
 			fmt.Printf("Answer Day One, Part One: %v\n", num*(2020-num))
 			return
@@ -47,7 +46,7 @@ func partTwo() {
 
 	numbersThatMatch := make(map[int]struct{})
 	for s.Scan() {
-		num, _ := strconv.Atoi(s.Text())
+		num := util.MustAtoi(s.Text())
 		for n := range numbersThatMatch {
 			if _, ok := numbersThatMatch[2020-num-n]; ok {
 				fmt.Printf("Answer Day One, Part Two: %v\n", num*n*(2020-num-n))

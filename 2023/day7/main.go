@@ -4,7 +4,6 @@ import (
 	"embed"
 	"fmt"
 	"sort"
-	"strconv"
 	"strings"
 
 	"github.com/thedadams/adventofcode/2023/util"
@@ -29,7 +28,7 @@ func partOne() {
 
 	plays := make([]hand, 0)
 	for s.Scan() {
-		bid, _ := strconv.Atoi(strings.Split(s.Text(), " ")[1])
+		bid := util.MustAtoi(strings.Split(s.Text(), " ")[1])
 		h := newHand(strings.Split(strings.Split(s.Text(), " ")[0], ""), bid)
 		plays = append(plays, h)
 	}
@@ -49,7 +48,7 @@ func partTwo() {
 
 	plays := make([]hand, 0)
 	for s.Scan() {
-		bid, _ := strconv.Atoi(strings.Split(s.Text(), " ")[1])
+		bid := util.MustAtoi(strings.Split(s.Text(), " ")[1])
 		h := newJokerHand(strings.Split(strings.Split(s.Text(), " ")[0], ""), bid)
 		plays = append(plays, h)
 	}

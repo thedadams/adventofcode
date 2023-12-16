@@ -3,7 +3,6 @@ package main
 import (
 	"embed"
 	"fmt"
-	"strconv"
 	"strings"
 
 	"github.com/thedadams/adventofcode/2023/util"
@@ -36,13 +35,13 @@ func partOne() {
 	for s.Scan() {
 		possible := true
 		gameInfo := strings.Split(s.Text(), ":")
-		id, _ = strconv.Atoi(strings.TrimPrefix(gameInfo[0], "Game "))
+		id = util.MustAtoi(strings.TrimPrefix(gameInfo[0], "Game "))
 
 	outer:
 		for _, round := range strings.Split(gameInfo[1], ";") {
 			for _, kind := range strings.Split(round, ",") {
 				kind = strings.TrimSpace(kind)
-				if count, _ := strconv.Atoi(strings.Split(kind, " ")[0]); count > config[strings.Split(kind, " ")[1]] {
+				if count := util.MustAtoi(strings.Split(kind, " ")[0]); count > config[strings.Split(kind, " ")[1]] {
 					possible = false
 					break outer
 				}
@@ -75,7 +74,7 @@ func partTwo() {
 		for _, round := range strings.Split(gameInfo[1], ";") {
 			for _, kind := range strings.Split(round, ",") {
 				kind = strings.TrimSpace(kind)
-				if count, _ := strconv.Atoi(strings.Split(kind, " ")[0]); count > config[strings.Split(kind, " ")[1]] {
+				if count := util.MustAtoi(strings.Split(kind, " ")[0]); count > config[strings.Split(kind, " ")[1]] {
 					config[strings.Split(kind, " ")[1]] = count
 				}
 			}

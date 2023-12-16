@@ -4,7 +4,6 @@ import (
 	"embed"
 	"fmt"
 	"math"
-	"strconv"
 	"strings"
 
 	"github.com/thedadams/adventofcode/2023/util"
@@ -32,7 +31,7 @@ func partOne() {
 	_, nums, _ := strings.Cut(s.Text(), ":")
 	for _, num := range strings.Split(nums, " ") {
 		if num := strings.TrimSpace(num); num != "" {
-			n, _ := strconv.Atoi(num)
+			n := util.MustAtoi(num)
 			seeds = append(seeds, n)
 		}
 	}
@@ -95,7 +94,7 @@ func partTwo() {
 	_, nums, _ := strings.Cut(s.Text(), ":")
 	for _, num := range strings.Split(nums, " ") {
 		if num := strings.TrimSpace(num); num != "" {
-			n, _ := strconv.Atoi(num)
+			n := util.MustAtoi(num)
 			seeds = append(seeds, n)
 		}
 	}
@@ -159,9 +158,9 @@ func populateMapBST(s *util.Scanner) *node {
 	s.Scan()
 	for strings.TrimSpace(s.Text()) != "" {
 		rnge := strings.Split(strings.TrimSpace(s.Text()), " ")
-		sourceStart, _ := strconv.Atoi(rnge[0])
-		destStart, _ := strconv.Atoi(rnge[1])
-		length, _ := strconv.Atoi(rnge[2])
+		sourceStart := util.MustAtoi(rnge[0])
+		destStart := util.MustAtoi(rnge[1])
+		length := util.MustAtoi(rnge[2])
 		this := &node{
 			destStart:   destStart,
 			sourceStart: sourceStart,

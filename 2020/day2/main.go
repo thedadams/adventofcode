@@ -3,7 +3,6 @@ package main
 import (
 	"embed"
 	"fmt"
-	"strconv"
 	"strings"
 
 	"github.com/thedadams/adventofcode/2023/util"
@@ -30,8 +29,8 @@ func partOne() {
 	for s.Scan() {
 		criteria, password, _ := strings.Cut(s.Text(), ":")
 		criteriaParts := strings.Split(criteria, " ")
-		minCount, _ := strconv.Atoi(strings.Split(criteriaParts[0], "-")[0])
-		maxCount, _ := strconv.Atoi(strings.Split(criteriaParts[0], "-")[1])
+		minCount := util.MustAtoi(strings.Split(criteriaParts[0], "-")[0])
+		maxCount := util.MustAtoi(strings.Split(criteriaParts[0], "-")[1])
 
 		var count int
 		for _, c := range strings.TrimSpace(password) {
@@ -60,8 +59,8 @@ func partTwo() {
 	for s.Scan() {
 		criteria, password, _ := strings.Cut(s.Text(), ":")
 		criteriaParts := strings.Split(criteria, " ")
-		firstIndex, _ := strconv.Atoi(strings.Split(criteriaParts[0], "-")[0])
-		secondIndex, _ := strconv.Atoi(strings.Split(criteriaParts[0], "-")[1])
+		firstIndex := util.MustAtoi(strings.Split(criteriaParts[0], "-")[0])
+		secondIndex := util.MustAtoi(strings.Split(criteriaParts[0], "-")[1])
 
 		var firstMatch, secondMatch bool
 		for i, c := range strings.TrimSpace(password) {
