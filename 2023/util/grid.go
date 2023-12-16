@@ -1,5 +1,7 @@
 package util
 
+import "fmt"
+
 func ValidStandardNeighbors[T comparable](grid [][]T, i, j int) [][2]int {
 	nbrs := make([][2]int, 0)
 	for _, pair := range [][2]int{
@@ -34,4 +36,11 @@ func ValidNeighborsWithDiagonals[T comparable](grid [][]T, x, y int) [][2]int {
 	}
 
 	return nbrs
+}
+
+func PrintGrid[T any](grid [][]T) {
+	for _, row := range grid {
+		fmt.Println(row)
+	}
+	fmt.Println()
 }
