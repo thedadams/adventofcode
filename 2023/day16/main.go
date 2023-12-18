@@ -37,7 +37,7 @@ func partOne() {
 	energized := make(map[[2]int]struct{})
 	energizeGrid(grid, energized, [2]int{0, 0}, "E")
 
-	fmt.Printf("Answer Day Fifteen, Part One: %v\n", len(energized))
+	fmt.Printf("Answer Day Sixteen, Part One: %v\n", len(energized))
 }
 
 func partTwo() {
@@ -110,7 +110,7 @@ func partTwo() {
 		}
 	}
 
-	fmt.Printf("Answer Day Fifteen, Part Two: %v\n", ans)
+	fmt.Printf("Answer Day Sixteen, Part Two: %v\n", ans)
 }
 
 func energizeGrid(grid [][][]string, energized map[[2]int]struct{}, laserPositions [2]int, direction string) {
