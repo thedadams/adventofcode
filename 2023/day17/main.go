@@ -124,7 +124,19 @@ func (p *pq) Len() int {
 }
 
 func (p *pq) Less(i, j int) bool {
-	return p.dist[p.queue[i]] < p.dist[p.queue[j]]
+	if p.dist[p.queue[i]] != p.dist[p.queue[j]] {
+		return p.dist[p.queue[i]] < p.dist[p.queue[j]]
+	}
+
+	if p.queue[i].y != p.queue[j].y {
+		return p.queue[i].y < p.queue[j].y
+	}
+
+	if p.queue[i].x != p.queue[j].x {
+		return p.queue[i].x < p.queue[j].x
+	}
+
+	return p.queue[i].streak < p.queue[j].streak
 }
 
 func (p *pq) Swap(i, j int) {
